@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h2>Voting</h2>
+  <button id="johnButton" class="btn btn-primary">Vote for John</button>
+  <button id="aliceButton" class="btn btn-success">Vote for Alice</button>
+  <br><br>
+  <div>
+    <h2>John's Votes: </h2><span id="johnVotes">0</span>
+  </div>
+  <div>
+    <h2>Alice's Votes: </h2><span id="aliceVotes">0</span>
+  </div>
+  <div id="winnerMessage">
+    <h2>Current Winner</h2>Its a Tie
+  </div>
+
+  <script>
+    const johnButton = document.getElementById('johnButton');
+    const aliceButton = document.getElementById('aliceButton');
+    const johnVotesDisplay = document.getElementById('johnVotes');
+    const aliceVotesDisplay = document.getElementById('aliceVotes');
+    const winnerMessageDisplay = document.getElementById('winnerMessage');
+
+
+    let johnVotes = 0;
+    let aliceVotes = 0;
+
+    johnButton.addEventListener('click', () => {
+      johnVotes++;
+      johnVotesDisplay.textContent = johnVotes;
+      determineWinner();
+    });
+
+    aliceButton.addEventListener('click', () => {
+      aliceVotes++;
+      aliceVotesDisplay.textContent = aliceVotes;
+      determineWinner();
+    });
+
+
+    function determineWinner() {
+      if (johnVotes > aliceVotes) {
+        winnerMessageDisplay.textContent = "John is currently winning!";
+      } else if (aliceVotes > johnVotes) {
+        winnerMessageDisplay.textContent = "Alice is currently winning!";
+      } else {
+        winnerMessageDisplay.textContent = "It's a tie!";
+      }
+    }
+  </script>
+</body>
+
+</html>
