@@ -50,9 +50,11 @@
 
     function determineWinner() {
       if (johnVotes > aliceVotes) {
-        winnerMessageDisplay.textContent = "John is currently winning!";
+        let lead = johnVotes - aliceVotes;
+        winnerMessageDisplay.textContent = `John is currently winning by ${lead} votes!`;
       } else if (aliceVotes > johnVotes) {
-        winnerMessageDisplay.textContent = "Alice is currently winning!";
+        let lead = aliceVotes - johnVotes;
+        winnerMessageDisplay.textContent = `Alice is currently winning by ${lead} votes!`;
       } else {
         winnerMessageDisplay.textContent = "It's a tie!";
       }
